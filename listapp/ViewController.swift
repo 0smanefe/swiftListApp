@@ -64,7 +64,7 @@ class ViewController: UIViewController {
     }
     @IBAction func removeitems(_ sender: UIBarButtonItem) {
         let removealert = UIAlertController(title: "sileyim mi gardaşım", message: nil, preferredStyle: .alert)
-        let removebutton = UIAlertAction(title: "anasını sik", style: .destructive) { _ in
+        let removebutton = UIAlertAction(title: "kalbimden silme abim", style: .destructive) { _ in
             let appdelegate = UIApplication.shared.delegate as? AppDelegate
                         
                         let managedobjectcontext = appdelegate?.persistentContainer.viewContext
