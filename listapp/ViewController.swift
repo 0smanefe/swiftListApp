@@ -48,9 +48,12 @@ class ViewController: UIViewController {
                 try? managedobjectcontext?.save()
                 
                 self.fetch()
+                
+                print("İTEM ADDED")
             }
             else {
                 self.present(warningalert, animated: true)
+                print("HOLDER FREE")
             }
         }
         
@@ -59,8 +62,12 @@ class ViewController: UIViewController {
         defaultbutton.addTextField()
         defaultbutton.addAction(inputbutton)
         defaultbutton.addAction(cancelbutton)
-        present(defaultbutton, animated: true)
-        
+        //present(defaultbutton, animated: true)
+        let cancelledbutton = {
+            self.present(defaultbutton, animated: true)
+            print("CANCELLED")
+        }
+        cancelledbutton()
     }
     @IBAction func removeitems(_ sender: UIBarButtonItem) {
         let removealert = UIAlertController(title: "sileyim mi gardaşım", message: nil, preferredStyle: .alert)
@@ -77,10 +84,12 @@ class ViewController: UIViewController {
                         try? managedobjectcontext?.save()
                         
                         self.fetch()
+                        print("İTEMS REMOVED")
             }
         removealert.addAction(removebutton)
         removealert.addAction(cancelbutton)
         self.present(removealert, animated: true)
+        
         }
     func fetch() {
         let appdelegate = UIApplication.shared.delegate as? AppDelegate
@@ -119,6 +128,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             try? managedobjectcontext?.save()
             
             self.fetch()
+            print("İTEM REMOVED")
             
         }
         let defaultbutton = UIAlertController(title: "düzenle", message: nil, preferredStyle: .alert)
@@ -139,12 +149,14 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 if managedobjectcontext!.hasChanges {
                     try? managedobjectcontext?.save()
+                    print("İTEM CHANGED")
                 }
                 
                 self.tableview.reloadData()
             }
             else {
                 self.present(warningalert, animated: true)
+                print("HOLDER FREE")
             }
         }
         
