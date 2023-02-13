@@ -64,6 +64,7 @@ class ViewController: UIViewController {
     }
     @IBAction func removeitems(_ sender: UIBarButtonItem) {
         let removealert = UIAlertController(title: "sileyim mi gardaşım", message: nil, preferredStyle: .alert)
+        let cancelbutton = UIAlertAction(title: "boşver silme abi", style: .cancel)
         let removebutton = UIAlertAction(title: "kalbimden silme abim", style: .destructive) { _ in
             let appdelegate = UIApplication.shared.delegate as? AppDelegate
                         
@@ -78,6 +79,7 @@ class ViewController: UIViewController {
                         self.fetch()
             }
         removealert.addAction(removebutton)
+        removealert.addAction(cancelbutton)
         self.present(removealert, animated: true)
         }
     func fetch() {
